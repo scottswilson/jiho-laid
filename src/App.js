@@ -13,6 +13,11 @@ import TheMan from "./jiho.jpg";
 
 import styled from "styled-components";
 
+const MyPaper = styled(Paper)`
+  padding: 8px;
+  background: #eaf4c5;
+`;
+
 const WideDiv = styled.div`
   text-align: center
   display: flex;
@@ -46,14 +51,14 @@ function App() {
   useEffect(() => {
     const timer = setInterval(() => {
       const jihoTimeLeftString = jihoMarried.fromNow();
-    
+
       const totalTime = jihoMarried - jihoBorn;
       const nowTime = moment() - jihoBorn;
-    
+
       const now = nowTime / totalTime * 100;
       setCountdownString(jihoTimeLeftString);
       setPercentVal(now);
-      if ((nowTime-totalTime)>0) {
+      if ((nowTime - totalTime) > 0) {
         setGotWord("Jiho got")
       } else {
         setGotWord("Jihos gettin'")
@@ -64,21 +69,21 @@ function App() {
 
   return (
     <Grid container>
-      <Grid item xs={2}/>
-      <Grid item xs={8}>
-        <Paper>
+      <Grid item xs={1} />
+      <Grid item xs={10}>
+        <MyPaper>
           <Grid container>
             <Grid item xs={12}>
-              <Typography variant="h1">
+              <Typography variant="h3">
                 {gotWord} laid {countdownString}
               </Typography>
               <WideDiv>
                 <Grid container>
                   <LeftDiv>
-                    {jihoBorn.format('MMMM Do YYYY, h:mm:ss a')}
+                    {jihoBorn.format('MMM Do YYYY')}
                   </LeftDiv>
                   <RightDiv>
-                    {jihoMarried.format('MMMM Do YYYY, h:mm:ss a')}
+                    {jihoMarried.format('MMM Do YYYY')}
                   </RightDiv>
                 </Grid>
                 <LinearProgress variant="determinate" value={percentVal} />
@@ -86,7 +91,7 @@ function App() {
               <JihoImg src={TheMan}></JihoImg>
             </Grid>
           </Grid>
-        </Paper>
+        </MyPaper>
       </Grid>
     </Grid>
   );
