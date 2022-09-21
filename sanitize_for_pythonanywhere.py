@@ -7,4 +7,4 @@ for path, dirs, files in os.walk(os.path.join(cwd, "build")):
     for line in fileinput.input(os.path.join(path, file), inplace=True):
       line = line.replace("static/", "welcome/static/jiho/static/")
       # print('{} {}'.format(fileinput.filelineno(), line), end='')
-      print "%d: %s" % (fileinput.filelineno(), line)
+      print "%s" % (line)
